@@ -45,10 +45,51 @@ def delete_setting(dicUsuario, chave):
 def view_settings(dicUsuario):
 
 
-    if dicUsuario == True:
-        print("Current User Settings")
+    if dicUsuario:
+        print("Current User Settings:")
         for chave, valor in dicUsuario.items():
             print(f"{chave}: {valor}")
     else:
         print("No settings available.")
+
+def main():
+
+    dictUsuario = {}
+
+    while True:
+        print("\nUser Settings Management")
+        print("1. Add Setting")
+        print("2. Update Setting")
+        print("3. Delete Setting")
+        print("4. View Settings")
+        print("5. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            chave = input("Enter setting name: ")
+            valor = input("Enter setting value: ")
+            add_setting(dictUsuario, (chave, valor))
+
+        elif choice == '2':
+            chave = input("Enter setting name to update: ")
+            valor = input("Enter new setting value: ")
+            update_setting(dictUsuario, (chave, valor))
+
+        elif choice == '3':
+            chave = input("Enter setting name to delete: ")
+            delete_setting(dictUsuario, chave)
+
+        elif choice == '4':
+            view_settings(dictUsuario)
+
+        elif choice == '5':
+            print("Exiting the program.")
+            break
+
+        else:
+            print("Invalid choice! Please try again.")
+
+if __name__ == "__main__":
+    main()
 
